@@ -1,7 +1,3 @@
-Here's a sample `README.md` for a Smart Parking project. You can adjust it according to your project requirements:
-
----
-
 # Smart Parking System
 
 ## Overview
