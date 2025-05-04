@@ -51,9 +51,13 @@ The Smart Parking System is an innovative solution to optimize parking space man
     NEXTAUTH_URL=http://localhost:3000
     NEXTAUTH_SECRET=your-nextauth-secret
     ```
-     
-   
 
+3. **Start the server:**:
+
+    ```bash
+    npm run dev
+    ```
+ 
 ## Usage
 
 ### For Users
