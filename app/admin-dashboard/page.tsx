@@ -94,21 +94,27 @@ export default function AdminDashboard() {
   if (status === 'loading') return <p className="text-center text-gray-600">Loading...</p>;
 
   return (
-    <div className="max-w-7xl mx-auto mt-10 px-6 py-8 bg-gray-50 min-h-screen">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
-        {/* <SignOutButton /> */}
-      </div>
-      <p className="text-gray-600 mb-8">Welcome, {session?.user?.email}</p>
-      {/* <MessageDisplay error={error} success={success} /> */}
-      <div
-      className={`p-4 rounded-md mb-6 ${
-        error ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
-      }`}
-    >
-      {error || success}
+  <div className="max-w-7xl mx-auto mt-10 px-6 py-8 bg-gradient-to-br from-gray-900 via-black to-gray-800 min-h-screen text-gray-100">
+    {/* Header */}
+    <div className="flex items-center justify-between mb-6">
+      <h1 className="text-3xl font-extrabold tracking-tight text-white">Admin Dashboard</h1>
     </div>
-      <div className="grid md:grid-cols-2 gap-8">
+    <p className="text-gray-400 mb-8">Welcome, {session?.user?.email}</p>
+
+    {/* Message Feedback */}
+    {(error || success) && (
+      <div
+        className={`p-4 rounded-md mb-6 font-medium shadow-md ${
+          error ? 'bg-red-600/20 text-red-300 border border-red-500' : 'bg-green-600/20 text-green-300 border border-green-500'
+        }`}
+      >
+        {error || success}
+      </div>
+    )}
+
+    {/* Forms Section */}
+    <div className="grid md:grid-cols-2 gap-8">
+      <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
         <CreateParkingLotForm
           lotName={lotName}
           setLotName={setLotName}
@@ -118,6 +124,9 @@ export default function AdminDashboard() {
           setSuccess={setSuccess}
           fetchParkingLots={fetchParkingLots}
         />
+      </div>
+
+      <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
         <CreateCameraTokenForm
           token={token}
           setToken={setToken}
@@ -129,6 +138,9 @@ export default function AdminDashboard() {
           fetchParkingLots={fetchParkingLots}
           fetchCameras={fetchCameras}
         />
+      </div>
+
+      <div className="md:col-span-2 bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
         <RecordExitForm
           exitParkingLot={exitParkingLot}
           setExitParkingLot={setExitParkingLot}
@@ -143,11 +155,21 @@ export default function AdminDashboard() {
           fetchParkingLots={fetchParkingLots}
         />
       </div>
+    </div>
+
+    {/* Parking Lots List */}
+    <div className="mt-10">
       <ParkingLotsList parkingLots={parkingLots} cameras={cameras} />
-      <div className="mt-10">
-        {/* <h2 className="text-2xl font-bold mb-4">Recent Activity Logs</h2> */}
+    </div>
+
+    {/* Logs Table */}
+    <div className="mt-10">
+      {/* <h2 className="text-2xl font-bold mb-4 text-white">Recent Activity Logs</h2> */}
+      <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-4 shadow-lg">
         <AdminLogsTable />
       </div>
     </div>
-  );
+  </div>
+);
+
 }
