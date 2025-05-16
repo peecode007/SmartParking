@@ -64,81 +64,81 @@ export default function RecordExitForm({
   };
 
   return (
-  <div className="md:col-span-2 bg-white/5 p-6 rounded-lg shadow-md text-white">
-    <h2 className="text-xl font-semibold text-gray-300 mb-4">Record Vehicle Exit</h2>
-    <form onSubmit={handleRecordExit} className="space-y-4 md:grid md:grid-cols-3 md:gap-6 ">
-      <div className="col-span-1">
-        <label htmlFor="exitParkingLot" className="block font-medium text-gray-200">
+    <div className="md:col-span-2 bg-white/5 p-6 rounded-lg shadow-md text-white">
+      <h2 className="text-xl font-semibold text-gray-300 mb-4">Record Vehicle Exit</h2>
+      <form onSubmit={handleRecordExit} className="space-y-4 md:grid md:grid-cols-3 md:gap-6 ">
+        <div className="col-span-1">
+          <label htmlFor="exitParkingLot" className="block font-medium text-gray-200">
           Parking Lot:
-        </label>
-        <select
-          id="exitParkingLot"
-          value={exitParkingLot}
-          onChange={(e) => {
-            setExitParkingLot(e.target.value);
-            setExitToken('');
-          }}
-          className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
-          disabled={parkingLots.length === 0}
-        >
-          {parkingLots.length === 0 ? (
-            <option value="">No parking lots available</option>
-          ) : (
-            parkingLots.map((lot) => (
-              <option key={lot._id} value={lot.name}>
-                {lot.name} ({lot.availableSlots} slots)
-              </option>
-            ))
-          )}
-        </select>
-      </div>
-      <div className="col-span-1">
-        <label htmlFor="exitToken" className="block font-medium text-gray-200">
+          </label>
+          <select
+            id="exitParkingLot"
+            value={exitParkingLot}
+            onChange={(e) => {
+              setExitParkingLot(e.target.value);
+              setExitToken('');
+            }}
+            className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
+            disabled={parkingLots.length === 0}
+          >
+            {parkingLots.length === 0 ? (
+              <option value="">No parking lots available</option>
+            ) : (
+              parkingLots.map((lot) => (
+                <option key={lot._id} value={lot.name}>
+                  {lot.name} ({lot.availableSlots} slots)
+                </option>
+              ))
+            )}
+          </select>
+        </div>
+        <div className="col-span-1">
+          <label htmlFor="exitToken" className="block font-medium text-gray-200">
           Camera Token:
-        </label>
-        <select
-          id="exitToken"
-          value={exitToken}
-          onChange={(e) => setExitToken(e.target.value)}
-          className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
-          disabled={getAvailableCameraTokens().length === 0}
-        >
-          {getAvailableCameraTokens().length === 0 ? (
-            <option value="">No tokens available</option>
-          ) : (
-            getAvailableCameraTokens().map((token) => (
-              <option key={token} value={token}>
-                {token}
-              </option>
-            ))
-          )}
-        </select>
-      </div>
-      <div className="col-span-1">
-        <label htmlFor="exitNumberplate" className="block font-medium text-gray-200">
+          </label>
+          <select
+            id="exitToken"
+            value={exitToken}
+            onChange={(e) => setExitToken(e.target.value)}
+            className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
+            disabled={getAvailableCameraTokens().length === 0}
+          >
+            {getAvailableCameraTokens().length === 0 ? (
+              <option value="">No tokens available</option>
+            ) : (
+              getAvailableCameraTokens().map((token) => (
+                <option key={token} value={token}>
+                  {token}
+                </option>
+              ))
+            )}
+          </select>
+        </div>
+        <div className="col-span-1">
+          <label htmlFor="exitNumberplate" className="block font-medium text-gray-200">
           Numberplate:
-        </label>
-        <input
-          id="exitNumberplate"
-          type="text"
-          value={exitNumberplate}
-          onChange={(e) => setExitNumberplate(e.target.value)}
-          placeholder="e.g., ABC123"
-          className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
-          required
-        />
-      </div>
-      <div className="col-span-3 mt-4">
-        <button
-          type="submit"
-          disabled={!exitParkingLot || !exitToken || !exitNumberplate}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
-        >
+          </label>
+          <input
+            id="exitNumberplate"
+            type="text"
+            value={exitNumberplate}
+            onChange={(e) => setExitNumberplate(e.target.value)}
+            placeholder="e.g., ABC123"
+            className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
+            required
+          />
+        </div>
+        <div className="col-span-3 mt-4">
+          <button
+            type="submit"
+            disabled={!exitParkingLot || !exitToken || !exitNumberplate}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
+          >
           Record Exit
-        </button>
-      </div>
-    </form>
-  </div>
-);
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 
 }

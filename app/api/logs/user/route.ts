@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { connectToDatabase } from '@/lib/db';
-import Log from '@/models/Log';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import Log from '@/models/Log';import { authOptions } from '@/lib/authOptions';
 
 export async function GET(request: NextRequest) {
   const startTime = Date.now();

@@ -51,51 +51,51 @@ export default function CreateParkingLotForm({
   };
 
   return (
-  <div className="bg-white/5 backdrop-blur border border-gray-700 p-6 rounded-lg shadow-lg text-gray-100">
-    <h2 className="text-2xl font-bold text-white mb-4">Create Parking Lot</h2>
-    <form onSubmit={handleCreateParkingLot} className="space-y-5">
-      {/* Parking Lot Name */}
-      <div>
-        <label htmlFor="lotName" className="block font-medium text-gray-300">
+    <div className="bg-white/5 backdrop-blur border border-gray-700 p-6 rounded-lg shadow-lg text-gray-100">
+      <h2 className="text-2xl font-bold text-white mb-4">Create Parking Lot</h2>
+      <form onSubmit={handleCreateParkingLot} className="space-y-5">
+        {/* Parking Lot Name */}
+        <div>
+          <label htmlFor="lotName" className="block font-medium text-gray-300">
           Parking Lot Name:
-        </label>
-        <input
-          id="lotName"
-          type="text"
-          value={lotName}
-          onChange={(e) => setLotName(e.target.value)}
-          placeholder="e.g., Lot A"
-          className="w-full mt-1 p-2 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          required
-        />
-      </div>
+          </label>
+          <input
+            id="lotName"
+            type="text"
+            value={lotName}
+            onChange={(e) => setLotName(e.target.value)}
+            placeholder="e.g., Lot A"
+            className="w-full mt-1 p-2 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          />
+        </div>
 
-      {/* Total Slots */}
-      <div>
-        <label htmlFor="totalSlots" className="block font-medium text-gray-300">
+        {/* Total Slots */}
+        <div>
+          <label htmlFor="totalSlots" className="block font-medium text-gray-300">
           Total Slots:
-        </label>
-        <input
-          id="totalSlots"
-          type="number"
-          value={totalSlots}
-          onChange={(e) => setTotalSlots(e.target.value)}
-          placeholder="e.g., 50"
-          className="w-full mt-1 p-2 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          required
-          min="1"
-        />
-      </div>
+          </label>
+          <input
+            id="totalSlots"
+            type="number"
+            value={totalSlots}
+            onChange={(e) => setTotalSlots(e.target.value)}
+            placeholder="e.g., 50"
+            className="w-full mt-1 p-2 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+            min="1"
+          />
+        </div>
 
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition"
-      >
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition"
+        >
         Create Parking Lot
-      </button>
-    </form>
-  </div>
-);
+        </button>
+      </form>
+    </div>
+  );
 
 }

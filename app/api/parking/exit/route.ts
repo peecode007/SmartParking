@@ -5,7 +5,7 @@ import Numberplate from '@/models/Numberplate';
 import ParkingLot from '@/models/ParkingLot';
 import Log from '@/models/Log';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../../auth/[...nextauth]/route';
+import { authOptions } from '@/lib/authOptions';
 
 export async function POST(request: Request) {
   try {

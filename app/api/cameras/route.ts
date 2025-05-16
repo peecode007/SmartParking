@@ -1,7 +1,7 @@
 // app/api/cameras/route.ts
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/lib/authOptions';
 import { connectToDatabase } from '@/lib/db';
 import Camera from '@/models/Camera';
 import ParkingLot from '@/models/ParkingLot';
