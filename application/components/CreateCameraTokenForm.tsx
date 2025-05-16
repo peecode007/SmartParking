@@ -3,15 +3,15 @@
 import { FormEvent } from 'react';
 
 interface CreateCameraTokenFormProps {
-  token: string;
-  setToken: (value: string) => void;
-  location: string;
-  setLocation: (value: string) => void;
-  parkingLots: any[];
-  setError: (value: string | null) => void;
-  setSuccess: (value: string | null) => void;
-  fetchParkingLots: () => Promise<void>;
-  fetchCameras: () => Promise<void>;
+    token: string;
+    setToken: (value: string) => void;
+    location: string;
+    setLocation: (value: string) => void;
+    parkingLots: any[];
+    setError: (value: string | null) => void;
+    setSuccess: (value: string | null) => void;
+    fetchParkingLots: () => Promise<void>;
+    fetchCameras: () => Promise<void>;
 }
 
 export default function CreateCameraTokenForm({
@@ -60,8 +60,13 @@ export default function CreateCameraTokenForm({
       <form onSubmit={handleCreateToken} className="space-y-5">
         {/* Token Input */}
         <div>
+<<<<<<< HEAD
           <label htmlFor="token" className="block font-medium text-gray-300">
           Token:
+=======
+          <label htmlFor="token" className="block font-medium text-gray-700">
+                        Token:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <input
             id="token"
@@ -76,8 +81,13 @@ export default function CreateCameraTokenForm({
 
         {/* Location Select */}
         <div>
+<<<<<<< HEAD
           <label htmlFor="location" className="block font-medium text-gray-300">
           Location:
+=======
+          <label htmlFor="location" className="block font-medium text-gray-700">
+                        Location:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <select
             id="location"
@@ -100,10 +110,18 @@ export default function CreateCameraTokenForm({
           type="submit"
           className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition"
         >
+<<<<<<< HEAD
         Create Token
+=======
+                    Create Token
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
         </button>
       </form>
     </div>
   );
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

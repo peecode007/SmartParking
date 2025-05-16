@@ -1,8 +1,8 @@
 'use client';
 
 interface ParkingLotsListProps {
-  parkingLots: any[];
-  cameras: any[];
+    parkingLots: any[];
+    cameras: any[];
 }
 
 export default function ParkingLotsList({ parkingLots, cameras }: ParkingLotsListProps) {
@@ -47,5 +47,9 @@ export default function ParkingLotsList({ parkingLots, cameras }: ParkingLotsLis
       )}
     </div>
   );
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

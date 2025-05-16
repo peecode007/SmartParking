@@ -3,13 +3,13 @@
 import { FormEvent } from 'react';
 
 interface CreateParkingLotFormProps {
-  lotName: string;
-  setLotName: (value: string) => void;
-  totalSlots: string;
-  setTotalSlots: (value: string) => void;
-  setError: (value: string | null) => void;
-  setSuccess: (value: string | null) => void;
-  fetchParkingLots: () => Promise<void>;
+    lotName: string;
+    setLotName: (value: string) => void;
+    totalSlots: string;
+    setTotalSlots: (value: string) => void;
+    setError: (value: string | null) => void;
+    setSuccess: (value: string | null) => void;
+    fetchParkingLots: () => Promise<void>;
 }
 
 export default function CreateParkingLotForm({
@@ -56,8 +56,13 @@ export default function CreateParkingLotForm({
       <form onSubmit={handleCreateParkingLot} className="space-y-5">
         {/* Parking Lot Name */}
         <div>
+<<<<<<< HEAD
           <label htmlFor="lotName" className="block font-medium text-gray-300">
           Parking Lot Name:
+=======
+          <label htmlFor="lotName" className="block font-medium text-gray-700">
+                        Parking Lot Name:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <input
             id="lotName"
@@ -72,8 +77,13 @@ export default function CreateParkingLotForm({
 
         {/* Total Slots */}
         <div>
+<<<<<<< HEAD
           <label htmlFor="totalSlots" className="block font-medium text-gray-300">
           Total Slots:
+=======
+          <label htmlFor="totalSlots" className="block font-medium text-gray-700">
+                        Total Slots:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <input
             id="totalSlots"
@@ -92,10 +102,18 @@ export default function CreateParkingLotForm({
           type="submit"
           className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition"
         >
+<<<<<<< HEAD
         Create Parking Lot
+=======
+                    Create Parking Lot
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
         </button>
       </form>
     </div>
   );
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

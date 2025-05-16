@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Link from 'next/link';
 
 export default function Home() {
@@ -58,5 +59,14 @@ export default function Home() {
         &copy; {new Date().getFullYear()} SmartParking Inc. All rights reserved.
       </footer>
     </main>
+=======
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div>
+            Hello
+    </div>
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
   );
 }

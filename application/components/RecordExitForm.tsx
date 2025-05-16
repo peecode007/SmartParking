@@ -3,17 +3,17 @@
 import { FormEvent } from 'react';
 
 interface RecordExitFormProps {
-  exitParkingLot: string;
-  setExitParkingLot: (value: string) => void;
-  exitToken: string;
-  setExitToken: (value: string) => void;
-  exitNumberplate: string;
-  setExitNumberplate: (value: string) => void;
-  parkingLots: any[];
-  getAvailableCameraTokens: () => string[];
-  setError: (value: string | null) => void;
-  setSuccess: (value: string | null) => void;
-  fetchParkingLots: () => Promise<void>;
+    exitParkingLot: string;
+    setExitParkingLot: (value: string) => void;
+    exitToken: string;
+    setExitToken: (value: string) => void;
+    exitNumberplate: string;
+    setExitNumberplate: (value: string) => void;
+    parkingLots: any[];
+    getAvailableCameraTokens: () => string[];
+    setError: (value: string | null) => void;
+    setSuccess: (value: string | null) => void;
+    fetchParkingLots: () => Promise<void>;
 }
 
 export default function RecordExitForm({
@@ -68,8 +68,13 @@ export default function RecordExitForm({
       <h2 className="text-xl font-semibold text-gray-300 mb-4">Record Vehicle Exit</h2>
       <form onSubmit={handleRecordExit} className="space-y-4 md:grid md:grid-cols-3 md:gap-6 ">
         <div className="col-span-1">
+<<<<<<< HEAD
           <label htmlFor="exitParkingLot" className="block font-medium text-gray-200">
           Parking Lot:
+=======
+          <label htmlFor="exitParkingLot" className="block font-medium text-gray-700">
+                        Parking Lot:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <select
             id="exitParkingLot"
@@ -93,8 +98,13 @@ export default function RecordExitForm({
           </select>
         </div>
         <div className="col-span-1">
+<<<<<<< HEAD
           <label htmlFor="exitToken" className="block font-medium text-gray-200">
           Camera Token:
+=======
+          <label htmlFor="exitToken" className="block font-medium text-gray-700">
+                        Camera Token:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <select
             id="exitToken"
@@ -115,8 +125,13 @@ export default function RecordExitForm({
           </select>
         </div>
         <div className="col-span-1">
+<<<<<<< HEAD
           <label htmlFor="exitNumberplate" className="block font-medium text-gray-200">
           Numberplate:
+=======
+          <label htmlFor="exitNumberplate" className="block font-medium text-gray-700">
+                        Numberplate:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <input
             id="exitNumberplate"
@@ -134,11 +149,21 @@ export default function RecordExitForm({
             disabled={!exitParkingLot || !exitToken || !exitNumberplate}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
           >
+<<<<<<< HEAD
           Record Exit
           </button>
+=======
+                        Record Exit
+          </button>
+
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
         </div>
       </form>
     </div>
   );
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

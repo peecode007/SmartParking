@@ -84,7 +84,7 @@ export default function AdminDashboard() {
       .filter(
         (camera: any) =>
           camera.location === selectedLot.name ||
-          (camera.parkingLot && camera.parkingLot.toString() === selectedLot._id.toString())
+                    (camera.parkingLot && camera.parkingLot.toString() === selectedLot._id.toString())
       )
       .map((camera: any) => camera.token);
     console.log('Available camera tokens for', exitParkingLot, ':', tokens);
@@ -99,6 +99,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-extrabold tracking-tight text-white">Admin Dashboard</h1>
       </div>
+<<<<<<< HEAD
       <p className="text-gray-400 mb-8">Welcome, {session?.user?.email}</p>
 
       {/* Message Feedback */}
@@ -113,6 +114,16 @@ export default function AdminDashboard() {
       )}
 
       {/* Forms Section */}
+=======
+      <p className="text-gray-600 mb-8">Welcome, {session?.user?.email}</p>
+      {/* <MessageDisplay error={error} success={success} /> */}
+      <div
+        className={`p-4 rounded-md mb-6 ${error ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
+        }`}
+      >
+        {error || success}
+      </div>
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
       <div className="grid md:grid-cols-2 gap-8">
         <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
           <CreateParkingLotForm
@@ -171,5 +182,9 @@ export default function AdminDashboard() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
