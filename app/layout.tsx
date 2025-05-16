@@ -32,9 +32,9 @@ export default async function RootLayout({
 
             {/* Center: Parking Test and Dashboard/Admin Dashboard */}
             <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-6">
-              <Link href="/parking" className="hover:underline">
+              {/* <Link href="/parking" className="hover:underline">
                 Parking Test
-              </Link>
+              </Link> */}
               {session && (
                 <Link
                   href={session.user.role === 'admin' ? '/admin-dashboard' : '/dashboard'}

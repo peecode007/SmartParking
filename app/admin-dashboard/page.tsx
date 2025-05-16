@@ -7,6 +7,7 @@ import CreateParkingLotForm from '@/components/CreateParkingLotForm';
 import CreateCameraTokenForm from '@/components/CreateCameraTokenForm';
 import RecordExitForm from '@/components/RecordExitForm';
 import ParkingLotsList from '@/components/ParkingLotsList';
+import AdminLogsTable from '@/components/AdminLogsTable';
 
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
@@ -143,6 +144,10 @@ export default function AdminDashboard() {
         />
       </div>
       <ParkingLotsList parkingLots={parkingLots} cameras={cameras} />
+      <div className="mt-10">
+        {/* <h2 className="text-2xl font-bold mb-4">Recent Activity Logs</h2> */}
+        <AdminLogsTable />
+      </div>
     </div>
   );
 }

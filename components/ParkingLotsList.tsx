@@ -17,7 +17,7 @@ export default function ParkingLotsList({ parkingLots, cameras }: ParkingLotsLis
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-10 p-4 bg-white shadow-md rounded-lg text-black">
       <h2 className="text-xl font-semibold text-gray-700">Parking Lots</h2>
       {parkingLots.length === 0 ? (
         <p className="mt-4 text-gray-600">No parking lots found.</p>
