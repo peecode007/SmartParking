@@ -24,4 +24,8 @@ const eslintConfig = [
   },
 ];
 
+<<<<<<< HEAD
 export default eslintConfig;
+=======
+export default eslintConfig;
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

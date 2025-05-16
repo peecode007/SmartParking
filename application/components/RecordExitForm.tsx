@@ -64,12 +64,17 @@ export default function RecordExitForm({
   };
 
   return (
-    <div className="md:col-span-2 bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-gray-700 mb-4">Record Vehicle Exit</h2>
-      <form onSubmit={handleRecordExit} className="space-y-4 md:grid md:grid-cols-3 md:gap-6">
+    <div className="md:col-span-2 bg-white/5 p-6 rounded-lg shadow-md text-white">
+      <h2 className="text-xl font-semibold text-gray-300 mb-4">Record Vehicle Exit</h2>
+      <form onSubmit={handleRecordExit} className="space-y-4 md:grid md:grid-cols-3 md:gap-6 ">
         <div className="col-span-1">
+<<<<<<< HEAD
+          <label htmlFor="exitParkingLot" className="block font-medium text-gray-200">
+          Parking Lot:
+=======
           <label htmlFor="exitParkingLot" className="block font-medium text-gray-700">
                         Parking Lot:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <select
             id="exitParkingLot"
@@ -78,7 +83,7 @@ export default function RecordExitForm({
               setExitParkingLot(e.target.value);
               setExitToken('');
             }}
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 text-black"
+            className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
             disabled={parkingLots.length === 0}
           >
             {parkingLots.length === 0 ? (
@@ -93,14 +98,19 @@ export default function RecordExitForm({
           </select>
         </div>
         <div className="col-span-1">
+<<<<<<< HEAD
+          <label htmlFor="exitToken" className="block font-medium text-gray-200">
+          Camera Token:
+=======
           <label htmlFor="exitToken" className="block font-medium text-gray-700">
                         Camera Token:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <select
             id="exitToken"
             value={exitToken}
             onChange={(e) => setExitToken(e.target.value)}
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 text-black"
+            className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
             disabled={getAvailableCameraTokens().length === 0}
           >
             {getAvailableCameraTokens().length === 0 ? (
@@ -115,8 +125,13 @@ export default function RecordExitForm({
           </select>
         </div>
         <div className="col-span-1">
+<<<<<<< HEAD
+          <label htmlFor="exitNumberplate" className="block font-medium text-gray-200">
+          Numberplate:
+=======
           <label htmlFor="exitNumberplate" className="block font-medium text-gray-700">
                         Numberplate:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <input
             id="exitNumberplate"
@@ -124,7 +139,7 @@ export default function RecordExitForm({
             value={exitNumberplate}
             onChange={(e) => setExitNumberplate(e.target.value)}
             placeholder="e.g., ABC123"
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 text-black"
+            className="w-full mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring focus:ring-blue-500 text-white"
             required
           />
         </div>
@@ -132,13 +147,23 @@ export default function RecordExitForm({
           <button
             type="submit"
             disabled={!exitParkingLot || !exitToken || !exitNumberplate}
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
           >
+<<<<<<< HEAD
+          Record Exit
+          </button>
+=======
                         Record Exit
           </button>
 
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
         </div>
       </form>
     </div>
   );
+<<<<<<< HEAD
+
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

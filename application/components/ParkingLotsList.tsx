@@ -17,28 +17,28 @@ export default function ParkingLotsList({ parkingLots, cameras }: ParkingLotsLis
   };
 
   return (
-    <div className="mt-10 p-4 bg-white shadow-md rounded-lg text-black">
-      <h2 className="text-xl font-semibold text-gray-700">Parking Lots</h2>
+    <div className="mt-10 p-6 bg-white/5 backdrop-blur border border-gray-700 rounded-lg shadow-lg text-gray-100">
+      <h2 className="text-2xl font-semibold text-white">Parking Lots</h2>
       {parkingLots.length === 0 ? (
-        <p className="mt-4 text-gray-600">No parking lots found.</p>
+        <p className="mt-4 text-gray-500">No parking lots found.</p>
       ) : (
         <div className="mt-4 overflow-x-auto">
-          <table className="min-w-full border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="p-2 text-left text-gray-700 border-b">Name</th>
-                <th className="p-2 text-left text-gray-700 border-b">Total Slots</th>
-                <th className="p-2 text-left text-gray-700 border-b">Available Slots</th>
-                <th className="p-2 text-left text-gray-700 border-b">Camera Tokens</th>
+          <table className="min-w-full border border-gray-600">
+            <thead className="bg-gray-800">
+              <tr>
+                <th className="p-3 text-left text-gray-300 border-b">Name</th>
+                <th className="p-3 text-left text-gray-300 border-b">Total Slots</th>
+                <th className="p-3 text-left text-gray-300 border-b">Available Slots</th>
+                <th className="p-3 text-left text-gray-300 border-b">Camera Tokens</th>
               </tr>
             </thead>
             <tbody>
               {parkingLots.map((lot) => (
-                <tr key={lot._id} className="hover:bg-gray-50 text-black">
-                  <td className="p-2 border-b">{lot.name}</td>
-                  <td className="p-2 border-b">{lot.totalSlots}</td>
-                  <td className="p-2 border-b">{lot.availableSlots}</td>
-                  <td className="p-2 border-b">{getCameraTokensForLot(lot)}</td>
+                <tr key={lot._id} className="hover:bg-gray-700 text-gray-200">
+                  <td className="p-3 border-b">{lot.name}</td>
+                  <td className="p-3 border-b">{lot.totalSlots}</td>
+                  <td className="p-3 border-b">{lot.availableSlots}</td>
+                  <td className="p-3 border-b">{getCameraTokensForLot(lot)}</td>
                 </tr>
               ))}
             </tbody>
@@ -47,4 +47,9 @@ export default function ParkingLotsList({ parkingLots, cameras }: ParkingLotsLis
       )}
     </div>
   );
+<<<<<<< HEAD
+
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

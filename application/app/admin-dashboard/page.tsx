@@ -94,11 +94,27 @@ export default function AdminDashboard() {
   if (status === 'loading') return <p className="text-center text-gray-600">Loading...</p>;
 
   return (
-    <div className="max-w-7xl mx-auto mt-10 px-6 py-8 bg-gray-50 min-h-screen">
+    <div className="max-w-7xl mx-auto mt-10 px-6 py-8 bg-gradient-to-br from-gray-900 via-black to-gray-800 min-h-screen text-gray-100">
+      {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
-        {/* <SignOutButton /> */}
+        <h1 className="text-3xl font-extrabold tracking-tight text-white">Admin Dashboard</h1>
       </div>
+<<<<<<< HEAD
+      <p className="text-gray-400 mb-8">Welcome, {session?.user?.email}</p>
+
+      {/* Message Feedback */}
+      {(error || success) && (
+        <div
+          className={`p-4 rounded-md mb-6 font-medium shadow-md ${
+            error ? 'bg-red-600/20 text-red-300 border border-red-500' : 'bg-green-600/20 text-green-300 border border-green-500'
+          }`}
+        >
+          {error || success}
+        </div>
+      )}
+
+      {/* Forms Section */}
+=======
       <p className="text-gray-600 mb-8">Welcome, {session?.user?.email}</p>
       {/* <MessageDisplay error={error} success={success} /> */}
       <div
@@ -107,46 +123,68 @@ export default function AdminDashboard() {
       >
         {error || success}
       </div>
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
       <div className="grid md:grid-cols-2 gap-8">
-        <CreateParkingLotForm
-          lotName={lotName}
-          setLotName={setLotName}
-          totalSlots={totalSlots}
-          setTotalSlots={setTotalSlots}
-          setError={setError}
-          setSuccess={setSuccess}
-          fetchParkingLots={fetchParkingLots}
-        />
-        <CreateCameraTokenForm
-          token={token}
-          setToken={setToken}
-          location={location}
-          setLocation={setLocation}
-          parkingLots={parkingLots}
-          setError={setError}
-          setSuccess={setSuccess}
-          fetchParkingLots={fetchParkingLots}
-          fetchCameras={fetchCameras}
-        />
-        <RecordExitForm
-          exitParkingLot={exitParkingLot}
-          setExitParkingLot={setExitParkingLot}
-          exitToken={exitToken}
-          setExitToken={setExitToken}
-          exitNumberplate={exitNumberplate}
-          setExitNumberplate={setExitNumberplate}
-          parkingLots={parkingLots}
-          getAvailableCameraTokens={getAvailableCameraTokens}
-          setError={setError}
-          setSuccess={setSuccess}
-          fetchParkingLots={fetchParkingLots}
-        />
+        <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
+          <CreateParkingLotForm
+            lotName={lotName}
+            setLotName={setLotName}
+            totalSlots={totalSlots}
+            setTotalSlots={setTotalSlots}
+            setError={setError}
+            setSuccess={setSuccess}
+            fetchParkingLots={fetchParkingLots}
+          />
+        </div>
+
+        <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
+          <CreateCameraTokenForm
+            token={token}
+            setToken={setToken}
+            location={location}
+            setLocation={setLocation}
+            parkingLots={parkingLots}
+            setError={setError}
+            setSuccess={setSuccess}
+            fetchParkingLots={fetchParkingLots}
+            fetchCameras={fetchCameras}
+          />
+        </div>
+
+        <div className="md:col-span-2 bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-6 shadow-lg">
+          <RecordExitForm
+            exitParkingLot={exitParkingLot}
+            setExitParkingLot={setExitParkingLot}
+            exitToken={exitToken}
+            setExitToken={setExitToken}
+            exitNumberplate={exitNumberplate}
+            setExitNumberplate={setExitNumberplate}
+            parkingLots={parkingLots}
+            getAvailableCameraTokens={getAvailableCameraTokens}
+            setError={setError}
+            setSuccess={setSuccess}
+            fetchParkingLots={fetchParkingLots}
+          />
+        </div>
       </div>
-      <ParkingLotsList parkingLots={parkingLots} cameras={cameras} />
+
+      {/* Parking Lots List */}
       <div className="mt-10">
-        {/* <h2 className="text-2xl font-bold mb-4">Recent Activity Logs</h2> */}
-        <AdminLogsTable />
+        <ParkingLotsList parkingLots={parkingLots} cameras={cameras} />
+      </div>
+
+      {/* Logs Table */}
+      <div className="mt-10">
+        {/* <h2 className="text-2xl font-bold mb-4 text-white">Recent Activity Logs</h2> */}
+        <div className="bg-white/5 backdrop-blur border border-gray-700 rounded-xl p-4 shadow-lg">
+          <AdminLogsTable />
+        </div>
       </div>
     </div>
   );
+<<<<<<< HEAD
+
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

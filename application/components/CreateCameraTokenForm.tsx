@@ -55,12 +55,18 @@ export default function CreateCameraTokenForm({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold text-gray-700 mb-4">Create Camera Token</h2>
-      <form onSubmit={handleCreateToken} className="space-y-4">
+    <div className="bg-white/5 backdrop-blur border border-gray-700 p-6 rounded-lg shadow-lg text-gray-100">
+      <h2 className="text-2xl font-bold text-white mb-4">Create Camera Token</h2>
+      <form onSubmit={handleCreateToken} className="space-y-5">
+        {/* Token Input */}
         <div>
+<<<<<<< HEAD
+          <label htmlFor="token" className="block font-medium text-gray-300">
+          Token:
+=======
           <label htmlFor="token" className="block font-medium text-gray-700">
                         Token:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <input
             id="token"
@@ -68,19 +74,26 @@ export default function CreateCameraTokenForm({
             value={token}
             onChange={(e) => setToken(e.target.value)}
             placeholder="e.g., cam-token-123"
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 text-black"
+            className="w-full mt-1 p-2 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           />
         </div>
+
+        {/* Location Select */}
         <div>
+<<<<<<< HEAD
+          <label htmlFor="location" className="block font-medium text-gray-300">
+          Location:
+=======
           <label htmlFor="location" className="block font-medium text-gray-700">
                         Location:
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
           </label>
           <select
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500 text-black"
+            className="w-full mt-1 p-2 bg-gray-900 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           >
             <option value="">Select a parking lot</option>
@@ -91,13 +104,24 @@ export default function CreateCameraTokenForm({
             ))}
           </select>
         </div>
+
+        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
+          className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition"
         >
+<<<<<<< HEAD
+        Create Token
+=======
                     Create Token
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
         </button>
       </form>
     </div>
   );
+<<<<<<< HEAD
+
 }
+=======
+}
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9

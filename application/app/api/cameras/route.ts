@@ -1,10 +1,19 @@
 // app/api/cameras/route.ts
+<<<<<<< HEAD
+import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/authOptions';
+import { connectToDatabase } from '@/lib/db';
+import Camera from '@/models/Camera';
+import ParkingLot from '@/models/ParkingLot';
+=======
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions";
 import { connectToDatabase } from "@/lib/db";
 import Camera from "@/models/Camera";
 import ParkingLot from "@/models/ParkingLot";
+>>>>>>> 72f467238828254b18ae9a2f965f5bdf175dc8a9
 
 export async function GET() {
   const session = await getServerSession(authOptions);
