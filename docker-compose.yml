@@ -1,0 +1,45 @@
+networks:
+  iot-network:
+    external: false
+
+services:
+  frontend:
+    build:
+      context: ./application
+      dockerfile: Dockerfile
+    image: nextjs-docker
+    container_name: frontend
+    env_file: .env.local
+    ports:
+      - "3000:3000"
+    networks:
+      - iot-network
+    restart: unless-stopped
+
+  esp32-prod:
+    build:
+      context: ./firmware
+      dockerfile: Dockerfile_prod
+    image: qemu-esp32-prod
+    container_name: esp32-prod
+    ports:
+      - "8080:80"
+    networks:
+      - iot-network
+    restart: no
+    profiles:
+      - prod
+
+  esp32-dev:
+    build:
+      context: ./firmware
+      dockerfile: Dockerfile_dev
+    image: qemu-esp32-dev
+    container_name: esp32-dev
+    ports:
+      - "8080:80"
+    networks:
+      - iot-network
+    restart: no
+    profiles:
+      - dev

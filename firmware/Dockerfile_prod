@@ -1,0 +1,74 @@
+FROM debian:stable AS esp32-builder
+
+WORKDIR /root
+
+COPY flash.sh .
+COPY ./program ./program
+RUN sed -i 's/\r$//' flash.sh
+RUN chmod +x flash.sh
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get install -y \
+    git wget flex bison gperf python3 python3-pip \
+    python3-setuptools python3-venv cmake ninja-build \
+    ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+
+ENV PATH="$HOME/.local/bin:${PATH}"
+RUN mkdir -p ~/esp
+RUN git clone --quiet --recursive https://github.com/espressif/esp-idf.git ~/esp/esp-idf
+RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN cd ~/esp/esp-idf \
+    && export IDF_GITHUB_ASSETS="dl.espressif.com/github_assets" \
+    && ./install.sh
+RUN /bin/bash -c "source $HOME/esp/esp-idf/export.sh && idf.py build -C program && ./flash.sh program/build/emulation.bin"
+
+
+FROM debian:stable AS qemu-builder
+
+WORKDIR /root
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get install -y \
+    git python3 python3-pip python3-setuptools \
+    python3-venv cmake libglib2.0-dev libfdt-dev \
+    libpixman-1-dev zlib1g-dev ninja-build libslirp-dev \
+    libgcrypt20-dev build-essential
+
+RUN git clone --quiet https://github.com/espressif/qemu.git
+RUN cd qemu \
+    && mkdir -p build \
+    && cd build \
+    && ../configure --target-list=xtensa-softmmu --without-default-features --enable-slirp  --enable-gcrypt \
+    && make -j $(nproc) vga=no \
+    && make install
+
+RUN ldd /usr/local/bin/qemu-system-xtensa
+
+FROM debian:stable AS final
+
+WORKDIR /root
+
+COPY --from=esp32-builder /root/flash.bin .
+
+COPY --from=qemu-builder /usr/local/bin/qemu-system-xtensa /usr/local/bin/
+COPY --from=qemu-builder /usr/local/share/qemu /usr/local/share/qemu
+
+COPY --from=qemu-builder /lib64/ld-linux-x86-64.so.2 /lib64/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libgcrypt.so.20 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libfdt.so.1 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libz.so.1 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libm.so.6 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libslirp.so.0 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libc.so.6 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libgpg-error.so.0 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libglib-2.0.so.0 /lib/x86_64-linux-gnu/
+COPY --from=qemu-builder /lib/x86_64-linux-gnu/libpcre2-8.so.0 /lib/x86_64-linux-gnu/
+
+CMD qemu-system-xtensa \
+    -nographic -M esp32 -m 4 \
+    -drive file=flash.bin,if=mtd,format=raw \
+    -nic user,model=open_eth,hostfwd=tcp::80-:80,hostfwd=tcp::3000-:3000

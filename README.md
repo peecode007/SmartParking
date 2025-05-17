@@ -1,63 +1,133 @@
 # Smart Parking System
 
-## Overview
+- [Quick Start](#quick-start)
+- [Firmware](#firmware)
+  - [Deployment](#deployment)
+  - [Development](#development)
+- [Application](#application)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Setup](#setup)
+    - [Setup: Manual](#setup-manual)
+    - [Setup: Docker](#setup-docker)
+- [Usage](#usage)
+  - [For Users](#for-users)
+  - [For Parking Lot Owners](#for-parking-lot-owners)
+- [Contributing](#contributing)
+
+---
+
+## Quick Start
+
+```bash
+$ docker-compose --profile prod up --build
+```
+
+---
+
+## Firmware
+
+- Emulation done in QEMU
+- Original Dockerfile from [mluis/qemu-esp32](https://github.com/mluis/qemu-esp32)
+
+### Deployment
+
+- Building and running the ESP32 firmware in a docker container (with network named iot-network to allow connection to application)
+```bash
+# In firmware folder
+$ docker build . -f .\Dockerfile_prod -t qemu-esp32-prod
+$ docker run -it -p 8080:80 --rm --network iot-network qemu-esp32
+```
+
+### Development
+
+- Building and running the development container to edit/compile ESP32 firmware
+- ESP-IDF tools installed
+- Here port `3000` is the port exposed by the application
+```bash
+# In firmware folder
+$ docker build . -f .\Dockerfile_dev -t qemu-esp32-dev
+$ docker run -it -p 8080:80 --rm --network iot-network qemu-esp32-dev
+# In the docker container
+$ idf
+$ idf.py build -C program
+$ ./flash.sh program/build/emulation.bin
+$ qemu-system-xtensa -nographic -M esp32 -m 4 -drive file=flash.bin,if=mtd,format=raw -nic user,model=open_eth,hostfwd=tcp::80-:80,hostfwd=tcp::3000-:3000
+```
+
+---
+
+## Application
+
+### Overview
 
 The Smart Parking System is an innovative solution to optimize parking space management using real-time data collection and IoT devices. This system helps users find available parking spaces in real-time, while also providing management tools for parking lot owners. The system leverages sensors, mobile applications, and cloud computing to provide a seamless experience for both users and parking providers.
 
-## Features
+### Features
 
-* **Real-time Parking Availability**: Users can view available parking spaces in real-time via a mobile app or web interface.
+* **Real-time Parking Availability**: Users can view available parking spaces in real-time via a web interface.
 * **Automated Parking Space Monitoring**: Sensors detect whether parking spaces are occupied or vacant.
 * **Parking Reservation**: Users can reserve a parking space in advance to avoid searching for parking.
 
-## Technologies Used
+### Technologies Used
 
 * **Backend & Frontend**: Next.js (React.js with API Routes)
 * **Database**: MongoDB
 
-## Installation
+### Setup
 
-### Prerequisites
-
-* Node.js (v15+)
+* Node.js (v15+) or Docker
 * MongoDB or MongoDB Atlas account
 
-### Setup Steps
+#### Setup: Docker
 
-1. **Clone the repository**:
+1. Build container
+  ```bash
+  cd application
+  docker build -t nextjs-docker .
+  ```
 
-   ```bash
-   git clone https://github.com/yourusername/smart-parking.git
-   cd smart-parking
-   ```
-
-2. **Setup Next.js (Frontend & Backend):**:
-
-   Install the dependencies:
-
-   ```bash
-   npm install
-   ```
-
-   * Configure the database connection (MongoDB URI) in `.env` file.
-   * Start the server:
-3. **Configure the Environment:**:
-
-    Create a .env.local file in the root directory with the necessary environment variables, such as MongoDB URI and API keys for payment gateways.
-
-    Example .env.local:
+2. Create .env.local file to store secrets
     ```bash
-    MONGODB_URI=your-mongo-uri
+    MONGODB_URI=your-mongo-db-uri
     NEXTAUTH_URL=http://localhost:3000
     NEXTAUTH_SECRET=your-nextauth-secret
+    PLATE_RECOGNIZER_API_KEY=your-plate-recognizer-api-key
     ```
 
-3. **Start the server:**:
+3. Run container
+  ```bash
+  docker run --env-file .\.env.local -p 3000:3000 nextjs-docker
+  ```
 
-    ```bash
-    npm run dev
-    ```
- 
+#### Setup: Manual
+
+1. Install dependencies
+  ```bash
+  npm install
+  ```
+
+2. Create .env.local file to store secrets
+  ```bash
+  MONGODB_URI=your-mongo-db-uri
+  NEXTAUTH_URL=http://localhost:3000
+  NEXTAUTH_SECRET=your-nextauth-secret
+  PLATE_RECOGNIZER_API_KEY=your-plate-recognizer-api-key
+  ```
+
+3. Build for production
+  ```bash
+  npm run build
+  ```
+
+4. Start the server
+  ```bash
+  npm run start
+  ```
+
+---
+
 ## Usage
 
 ### For Users
@@ -71,11 +141,7 @@ The Smart Parking System is an innovative solution to optimize parking space man
 2. **Monitor parking lot occupancy** in real-time.
 3. **Manage pricing** and parking slots.
 
-## API Documentation
-
-The backend exposes a RESTful API that provides endpoints for parking space availability, reservations, user management, and payment processing.
-
-For detailed API documentation, visit [API Docs](./docs/api.md).
+---
 
 ## Contributing
 
@@ -87,15 +153,4 @@ We welcome contributions to improve the Smart Parking System! Please follow thes
 4. Push to the branch (`git push origin feature-name`).
 5. Open a Pull Request for review.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-## Acknowledgments
-
-* Thanks to all contributors and developers in the IoT and Smart Parking community.
-* Inspired by modern parking management systems and real-time location-based services.
-
 ---
-
-Feel free to modify this to fit your specific project requirements, tech stack, and features.
